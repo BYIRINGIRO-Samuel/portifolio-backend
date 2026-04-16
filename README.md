@@ -1,9 +1,51 @@
-# Portfolio Backend
+# 🚀 Portfolio Backend - Neural Dynamics
 
-Node.js Express backend for handling contact form submissions via Nodemailer.
+The robust backend core for the **Samuel Byiringiro Portfolio**. This server handles secure communication, contact form dispatching, and system notifications using Node.js and Nodemailer.
 
-## Setup
+## 🛠️ Tech Stack
 
-1. Copy `.env.example` to `.env`.
-2. Install dependencies: `npm install`.
-3. Start the server: `npm run dev`.
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Email Service**: Nodemailer (SMTP)
+- **Security**: CORS, Dotenv, App Passwords
+- **Development**: Nodemon
+
+## ⚙️ Setup & Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/BYIRINGIRO-Samuel/portifolio-backend.git
+   cd portifolio-backend
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Configuration**:
+   Create a `.env` file based on `.env.example`:
+   ```env
+   PORT=5000
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-google-app-password
+   ```
+
+4. **Launch the Server**:
+   ```bash
+   # Development mode with auto-reload
+   npm run dev
+
+   # Production mode
+   npm run start
+   ```
+
+## 🔌 API Endpoints
+
+### `POST /api/contact`
+Receives contact form submissions from the frontend.
+- **Payload**: `{ "name": "string", "email": "string", "message": "string" }`
+- **Response**: `200 OK` on success, `500 Error` on failure.
+
+## 🔒 Security Policy
+This project uses `.env` files to store sensitive credentials. **Never commit your `.env` file to version control.** A `.gitignore` is provided to ensure local secrets stay local.
