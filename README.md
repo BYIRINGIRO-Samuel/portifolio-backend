@@ -27,8 +27,9 @@ The robust backend core for the **Samuel Byiringiro Portfolio**. This server han
    Create a `.env` file based on `.env.example`:
    ```env
    PORT=5000
-   EMAIL_USER=your-email@gmail.com
+   EMAIL_USER=sender-email@gmail.com
    EMAIL_PASS=your-google-app-password
+   RECEIVER_EMAIL=your-recipient-email@gmail.com
    ```
 
 4. **Launch the Server**:
@@ -48,4 +49,4 @@ Receives contact form submissions from the frontend.
 - **Response**: `200 OK` on success, `500 Error` on failure.
 
 ## 🔒 Security Policy
-This project uses `.env` files to store sensitive credentials. **Never commit your `.env` file to version control.** A `.gitignore` is provided to ensure local secrets stay local.
+This project uses `.env` files to store sensitive credentials. **Never commit your `.env` file to version control.** A `.gitignore` is provided to ensure local secrets stay local. All personal emails are abstracted to environment variables for public safety.

@@ -25,7 +25,7 @@ app.post('/api/contact', async (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: 'byiringirosamuel533@gmail.com',
+    to: process.env.RECEIVER_EMAIL,
     subject: `Portfolio Contact from ${name}`,
     text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     html: `
