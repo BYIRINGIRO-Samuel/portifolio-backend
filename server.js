@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const axios = require('axios');
 require('dotenv').config();
 
 const app = express();
@@ -41,8 +42,17 @@ app.post('/api/contact', async (req, res) => {
   };
 
   try {
+    // 1. Send Email
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Email sent successfully' });
+    
+    // 2. Also save to Admin Database (Admin Backend on port 5001)
+    try {
+      await axios.post('http://localhost:5001/api/messages', { name, email, message });
+    } catch (dbError) {
+      console.error('Failed to save to database, but email sent:', dbError.message);
+    }
+
+    res.status(200).json({ message: 'Email sent and message saved successfully' });
   } catch (error) {
     console.error('Email Error:', error);
     res.status(500).json({ error: 'Failed to send email' });
